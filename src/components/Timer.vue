@@ -1,5 +1,9 @@
 <template>
-    <h2 id="timer">{{msg}}</h2>
+    <div id="timer">
+        <h2 >{{msg}}</h2>
+        <button @click="some">check</button>
+    </div>
+
 </template>
 
 <script>
@@ -7,12 +11,17 @@
         name: 'Timer',
         props: {
           msg: String
+        },
+        methods: {
+            some() {
+                alert(1);
+            }
         }
     }
 </script>
 
 <style scoped>
-    #timer {
+    h2 {
         margin: 30px auto;
         text-align: center;
 
