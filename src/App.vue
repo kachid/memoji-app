@@ -1,21 +1,10 @@
 <template>
-
-    <section id="wrap">
-        <MainField></MainField>
-        <MainField></MainField>
-        <MainField></MainField>
-        <MainField></MainField>
-        <MainField></MainField>
-        <MainField></MainField>
-        <MainField></MainField>
-        <MainField></MainField>
-        <MainField></MainField>
-        <MainField></MainField>
-        <MainField></MainField>
-        <MainField></MainField>
-        <Timer></Timer>
+<div id="wrap">
+    <section>
+        <MainField v-for="n in 12"></MainField>
     </section>
-
+     <Timer></Timer>
+</div>
 </template>
 
 <script>
@@ -29,7 +18,7 @@ export default {
     MainField,
     Timer
   },
- 
+
 }
 </script>
 
@@ -55,7 +44,7 @@ header h1 {
 
 
 
-#wrap {
+section {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 25px;
