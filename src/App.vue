@@ -2,6 +2,17 @@
 
     <section id="wrap">
         <MainField></MainField>
+        <MainField></MainField>
+        <MainField></MainField>
+        <MainField></MainField>
+        <MainField></MainField>
+        <MainField></MainField>
+        <MainField></MainField>
+        <MainField></MainField>
+        <MainField></MainField>
+        <MainField></MainField>
+        <MainField></MainField>
+        <MainField></MainField>
         <Timer></Timer>
     </section>
 
@@ -17,7 +28,8 @@ export default {
   components: {
     MainField,
     Timer
-  }
+  },
+ 
 }
 </script>
 

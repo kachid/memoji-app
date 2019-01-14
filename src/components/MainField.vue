@@ -1,6 +1,8 @@
 <template>
     <figure class="flip">
-        <div class="card">
+        <div class="card"
+             @click="setActiveClass"
+             v-bind:class="{ is_flipped: isActive }">
             <div class="card_back"></div>
             <span class="card_face"></span>
         </div>
@@ -10,21 +12,32 @@
 <script>
 export default {
   name: 'MainField',
+  data: function () {
+      return {
+          isActive: false
+      }
+  },
   props: {
     msg: String
   },
+  methods: {
+      setActiveClass() {
+          this.isActive = !this.isActive;
+      }
+  },
   render: function (createElement) {
       return createElement('div',
-        Array.apply(null, { length: 12 }).map(function () {
+        Array.apply(null, { length: 12 }).map(() => {
           return createElement('p', 'hi')
         })
       )
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
 .flip {
     perspective: 600px;
 }
