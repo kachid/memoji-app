@@ -1,7 +1,7 @@
 <template>
 <div id="wrap">
     <section>
-        <MainField v-for="n in 12"></MainField>
+        <MainField v-for="n in 12" :key="n"></MainField>
     </section>
      <Timer></Timer>
 </div>
