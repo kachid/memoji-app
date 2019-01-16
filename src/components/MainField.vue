@@ -4,7 +4,7 @@
              @click="setActiveClass"
              v-bind:class="{ is_flipped: isActive }">
             <div class="card_back"></div>
-            <span class="card_face"></span>
+            <span class="card_face">{{msg}}</span>
         </div>
     </figure>
 </template>

@@ -1,7 +1,12 @@
 <template>
 <div id="wrap">
     <section>
-        <MainField v-for="n in 12" :key="n"></MainField>
+        <MainField
+            v-for="card in cards"
+            :key="card"
+            :msg="card"
+        >
+        </MainField>
     </section>
      <Timer></Timer>
 </div>
@@ -18,8 +23,14 @@ export default {
     MainField,
     Timer
   },
-
+  data () {
+      return {
+          cards: elArr
+      }
+  }
 }
+
+let elArr = ['🐻', '🐼', '🐨', '🐯', '🦁', '🐻', '🐼', '🐨', '🐯', '🦁', '🐹', '🐹'];
 </script>
 
 <style>

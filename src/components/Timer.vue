@@ -21,7 +21,7 @@
 </script>
 
 <style scoped>
-    h2 {
+    h2, button {
         margin: 30px auto;
         text-align: center;
 
