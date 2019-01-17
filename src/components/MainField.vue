@@ -25,13 +25,6 @@ export default {
           this.isActive = !this.isActive;
       }
   },
-  render: function (createElement) {
-      return createElement('div',
-        Array.apply(null, { length: 12 }).map(() => {
-          return createElement('p', 'hi')
-        })
-      )
-  }
 }
 
 </script>

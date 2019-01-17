@@ -2,8 +2,8 @@
 <div id="wrap">
     <section>
         <MainField
-            v-for="card in cards"
-            :key="card"
+            v-for="(card, i) in shuffled"
+            :key="i"
             :msg="card"
         >
         </MainField>
@@ -27,10 +27,19 @@ export default {
       return {
           cards: elArr
       }
+  },
+  computed: {
+      shuffled () {
+          let shuffledCards = [...this.cards].sort(() => Math.random() - 0.5);
+
+          return shuffledCards;
+      }
   }
 }
 
-let elArr = ['🐻', '🐼', '🐨', '🐯', '🦁', '🐻', '🐼', '🐨', '🐯', '🦁', '🐹', '🐹'];
+let elArr = [
+    '🐻', '🐼', '🐨', '🐯', '🦁', '🐻', '🐼', '🐨', '🐯', '🦁', '🐹', '🐹'
+];
 </script>
 
 <style>
