@@ -34,6 +34,9 @@ export default {
 
           return shuffledCards;
       }
+  },
+  watch: {
+      //logic of cards
   }
 }
 
