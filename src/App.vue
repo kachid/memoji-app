@@ -3,8 +3,9 @@
     <section>
         <MainField
             v-for="(card, i) in shuffled"
-            :key="i"
+            :key="i + 1"
             :msg="card"
+            @hui="handler"
         >
         </MainField>
     </section>
@@ -25,7 +26,55 @@ export default {
   },
   data () {
       return {
-          cards: elArr
+          cards: elArr,
+          isOpenOne: false,
+          isOpenTwo: false,
+          firstCard: '',
+          secondCard: ''
+      }
+  },
+  methods: {
+      handler () {
+          alert(1);
+          if (!this.isOpenOne/* && inverter("is_open1")*/) { // <---------open first card
+              // add condition if the cards were opened incorrectly
+              if (this.firstCard/* && !compareCards()*/) {
+                  //firstCard.parentNode.classList.remove("is_flipped");
+                  //firstCard.classList.remove("is_open1", "is_wrong");
+                  //secondCard.parentNode.classList.remove("is_flipped");
+                  //secondCard.classList.remove("is_open2", "is_wrong");
+                  this.secondCard = undefined;
+              }
+
+              this.isOpenOne = !this.isOpenOne;
+
+              /*firstCard = form.querySelector(".is_open1");
+
+          } else if (!isOpenTwo && inverter("is_open2")) { // <--open second card
+              isOpenTwo = !isOpenTwo;
+
+              secondCard = form.querySelector(".is_open2");
+
+              if (compareCards()) {
+                  firstCard.classList.add("is_right");
+                  secondCard.classList.add("is_right");
+                  firstCard.classList.remove("is_open1");
+                  secondCard.classList.remove("is_open2");
+
+                  isOpenOne = !isOpenOne;
+                  isOpenTwo = !isOpenTwo;
+                  firstCard = undefined;
+
+                  rightPairs++;
+
+              } else {
+                  firstCard.classList.add("is_wrong");
+                  secondCard.classList.add("is_wrong");
+
+                  isOpenOne = !isOpenOne;
+                  isOpenTwo = !isOpenTwo;
+              }*/
+          }
       }
   },
   computed: {
@@ -76,7 +125,12 @@ section {
     width: 595px;
 }
 
-
+.is_wrong {
+    background-color: #F44336;
+}
+.is_right {
+    background-color: #5AD66F;
+}
 
 .substrate {
     position: fixed;

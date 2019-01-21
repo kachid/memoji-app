@@ -1,8 +1,10 @@
 <template>
-    <figure class="flip">
+    <figure class="flip"
+            @click="setActiveClass"
+            >
         <div class="card"
-             @click="setActiveClass"
-             v-bind:class="{ is_flipped: isActive }">
+             v-bind:class="{ is_flipped: isActive }"
+             >
             <div class="card_back"></div>
             <span class="card_face">{{msg}}</span>
         </div>
@@ -22,8 +24,9 @@ export default {
   },
   methods: {
       setActiveClass() {
+          this.$emit('hui');
           this.isActive = !this.isActive;
-      }
+      },
   },
 }
 
@@ -83,10 +86,5 @@ export default {
     transform: rotateY(180deg);
 }
 
-.is_wrong {
-    background-color: #F44336;
-}
-.is_right {
-    background-color: #5AD66F;
-}
+
 </style>
