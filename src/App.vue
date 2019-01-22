@@ -5,7 +5,7 @@
             v-for="(card, i) in shuffled"
             :key="i + 1"
             :msg="card"
-            @hui="handler"
+            @clickCard="handler"
         >
         </MainField>
     </section>
@@ -34,11 +34,11 @@ export default {
       }
   },
   methods: {
-      handler () {
-          alert(1);
+      handler (card) {
+
           if (!this.isOpenOne/* && inverter("is_open1")*/) { // <---------open first card
               // add condition if the cards were opened incorrectly
-              if (this.firstCard/* && !compareCards()*/) {
+              if (this.firstCard && !this.compareCards) {
                   //firstCard.parentNode.classList.remove("is_flipped");
                   //firstCard.classList.remove("is_open1", "is_wrong");
                   //secondCard.parentNode.classList.remove("is_flipped");
@@ -48,32 +48,32 @@ export default {
 
               this.isOpenOne = !this.isOpenOne;
 
-              /*firstCard = form.querySelector(".is_open1");
+              this.firstCard = card;
 
-          } else if (!isOpenTwo && inverter("is_open2")) { // <--open second card
-              isOpenTwo = !isOpenTwo;
+          } else if (!this.isOpenTwo/* && inverter("is_open2")*/) { // <--open second card
+              this.isOpenTwo = !this.isOpenTwo;
 
-              secondCard = form.querySelector(".is_open2");
+              this.secondCard = card;
 
-              if (compareCards()) {
-                  firstCard.classList.add("is_right");
-                  secondCard.classList.add("is_right");
-                  firstCard.classList.remove("is_open1");
-                  secondCard.classList.remove("is_open2");
+              if (this.compareCards) { //kak peredat class?
+                  this.firstCard.classList.add("is_right");
+                  this.secondCard.classList.add("is_right");
+                  this.firstCard.classList.remove("is_open1");
+                  this.secondCard.classList.remove("is_open2");
 
-                  isOpenOne = !isOpenOne;
-                  isOpenTwo = !isOpenTwo;
-                  firstCard = undefined;
+                  this.isOpenOne = !this.isOpenOne;
+                  this.isOpenTwo = !this.isOpenTwo;
+                  this.firstCard = undefined;
 
-                  rightPairs++;
+                  /*rightPairs++;
 
               } else {
                   firstCard.classList.add("is_wrong");
                   secondCard.classList.add("is_wrong");
 
                   isOpenOne = !isOpenOne;
-                  isOpenTwo = !isOpenTwo;
-              }*/
+                  isOpenTwo = !isOpenTwo;*/
+              }
           }
       }
   },
@@ -82,6 +82,9 @@ export default {
           let shuffledCards = [...this.cards].sort(() => Math.random() - 0.5);
 
           return shuffledCards;
+      },
+      compareCards () {
+          return this.firstCard.msg === this.secondCard.msg;
       }
   },
   watch: {

@@ -1,8 +1,9 @@
 <template>
     <figure class="flip"
-            @click="setActiveClass"
+
             >
         <div class="card"
+             @click="setActiveClass"
              v-bind:class="{ is_flipped: isActive }"
              >
             <div class="card_back"></div>
@@ -24,7 +25,7 @@ export default {
   },
   methods: {
       setActiveClass() {
-          this.$emit('hui');
+          this.$emit('clickCard', this);
           this.isActive = !this.isActive;
       },
   },
