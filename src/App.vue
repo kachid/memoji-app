@@ -30,49 +30,50 @@ export default {
           isOpenOne: false,
           isOpenTwo: false,
           firstCard: '',
-          secondCard: ''
+          secondCard: '',
+          rightPairs: 0
       }
   },
   methods: {
-      handler (card) {
+      handler (cardEl) {
 
           if (!this.isOpenOne/* && inverter("is_open1")*/) { // <---------open first card
               // add condition if the cards were opened incorrectly
               if (this.firstCard && !this.compareCards) {
-                  //firstCard.parentNode.classList.remove("is_flipped");
-                  //firstCard.classList.remove("is_open1", "is_wrong");
-                  //secondCard.parentNode.classList.remove("is_flipped");
-                  //secondCard.classList.remove("is_open2", "is_wrong");
+                  this.firstCard.is_flipped = false;
+                  this.firstCard.is_wrong = false; //("is_open1")
+                  this.secondCard.is_flipped = false;
+                  this.secondCard.is_wrong = false; //("is_open1")
                   this.secondCard = undefined;
               }
 
               this.isOpenOne = !this.isOpenOne;
 
-              this.firstCard = card;
+              this.firstCard = cardEl;
 
           } else if (!this.isOpenTwo/* && inverter("is_open2")*/) { // <--open second card
               this.isOpenTwo = !this.isOpenTwo;
 
-              this.secondCard = card;
+              this.secondCard = cardEl;
 
               if (this.compareCards) { //kak peredat class?
-                  this.firstCard.classList.add("is_right");
-                  this.secondCard.classList.add("is_right");
-                  this.firstCard.classList.remove("is_open1");
-                  this.secondCard.classList.remove("is_open2");
+                  this.firstCard.is_right = true;
+                  this.firstCard.is_flipped = false;//this.firstCard.classList.remove("is_open1");
+                  this.secondCard.is_right = true;
+                  this.secondCard.is_flipped = false;//this.secondCard.classList.remove("is_open2");
 
                   this.isOpenOne = !this.isOpenOne;
                   this.isOpenTwo = !this.isOpenTwo;
                   this.firstCard = undefined;
 
-                  /*rightPairs++;
+                  this.rightPairs++;
 
               } else {
-                  firstCard.classList.add("is_wrong");
-                  secondCard.classList.add("is_wrong");
+                  this.firstCard.is_wrong = true;
+                  this.secondCard.is_wrong = true;
 
-                  isOpenOne = !isOpenOne;
-                  isOpenTwo = !isOpenTwo;*/
+                  this.isOpenOne = !this.isOpenOne;
+                  this.isOpenTwo = !this.isOpenTwo;
               }
           }
       }
@@ -126,13 +127,6 @@ section {
 
     margin: 0 auto;
     width: 595px;
-}
-
-.is_wrong {
-    background-color: #F44336;
-}
-.is_right {
-    background-color: #5AD66F;
 }
 
 .substrate {

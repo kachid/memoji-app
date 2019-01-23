@@ -4,10 +4,14 @@
             >
         <div class="card"
              @click="setActiveClass"
-             v-bind:class="{ is_flipped: isActive }"
+             :class="{ is_flipped: is_flipped }"
              >
             <div class="card_back"></div>
-            <span class="card_face">{{msg}}</span>
+            <span class="card_face"
+                  :class="{ is_right: is_right, is_wrong: is_wrong }"
+            >
+                {{msg}}
+            </span>
         </div>
     </figure>
 </template>
@@ -17,16 +21,19 @@ export default {
   name: 'MainField',
   data: function () {
       return {
-          isActive: false
+          is_flipped: false,
+          is_right: false,
+          is_wrong: false
       }
   },
   props: {
-    msg: String
+    msg: String,
+
   },
   methods: {
       setActiveClass() {
           this.$emit('clickCard', this);
-          this.isActive = !this.isActive;
+          this.is_flipped = !this.is_flipped;
       },
   },
 }
@@ -85,6 +92,13 @@ export default {
 
 .is_flipped {
     transform: rotateY(180deg);
+}
+
+.is_wrong {
+    background-color: #F44336;
+}
+.is_right {
+    background-color: #5AD66F;
 }
 
 
