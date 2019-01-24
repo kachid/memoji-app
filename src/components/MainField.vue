@@ -19,7 +19,7 @@
 <script>
 export default {
   name: 'MainField',
-  data: function () {
+  data () {
       return {
           is_flipped: false,
           is_right: false,

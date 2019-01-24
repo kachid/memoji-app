@@ -1,16 +1,16 @@
 <template>
-<div id="wrap">
-    <section>
-        <MainField
-            v-for="(card, i) in shuffled"
-            :key="i + 1"
-            :msg="card"
-            @clickCard="handler"
-        >
-        </MainField>
-    </section>
-     <Timer></Timer>
-</div>
+    <div id="wrap">
+        <section>
+            <MainField
+                v-for="(card, i) in shuffled"
+                :key="i + 1"
+                :msg="card"
+                @clickCard="handler"
+            >
+            </MainField>
+        </section>
+         <Timer></Timer>
+    </div>
 </template>
 
 <script>
@@ -112,8 +112,6 @@ header h1 {
     line-height: 47px;
     color: #434344;
 }
-
-
 
 section {
     display: grid;

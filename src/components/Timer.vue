@@ -1,7 +1,6 @@
 <template>
     <div id="timer">
-        <h2 >{{msg}}</h2>
-        <button @click="some">check</button>
+        <h2 >{{timeShow}}</h2>
     </div>
 
 </template>
@@ -9,19 +8,26 @@
 <script>
     export default {
         name: 'Timer',
+        data () {
+            return {
+                timeNow: 59
+            }
+        },
         props: {
           msg: String
-        },
-        methods: {
-            some() {
-                alert(1);
-            }
-        }
+      },
+      computed: {
+          timeShow () {
+              let timeStr = String(this.timeNow);
+
+              return `0:${timeStr}`;
+          }
+      }
     }
 </script>
 
 <style scoped>
-    h2, button {
+    h2 {
         margin: 30px auto;
         text-align: center;
 
