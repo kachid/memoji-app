@@ -32,8 +32,11 @@ export default {
   },
   methods: {
       setActiveClass() {
-          this.$emit('clickCard', this);
-          this.is_flipped = !this.is_flipped;
+          this.$emit('clickCard', this); // send this to parent module
+
+          if (this.is_flipped === false) {
+              this.is_flipped = true;
+          }
       },
   },
 }

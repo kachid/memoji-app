@@ -37,44 +37,39 @@ export default {
   methods: {
       handler (cardEl) {
 
-          if (!this.isOpenOne/* && inverter("is_open1")*/) { // <---------open first card
+          if (this.isOpenOne === false && cardEl.is_flipped === false) { // <---------open first card
               // add condition if the cards were opened incorrectly
               if (this.firstCard && !this.compareCards) {
                   this.firstCard.is_flipped = false;
-                  this.firstCard.is_wrong = false; //("is_open1")
+                  this.firstCard.is_wrong = false;
                   this.secondCard.is_flipped = false;
-                  this.secondCard.is_wrong = false; //("is_open1")
-                  this.secondCard = undefined;
+                  this.secondCard.is_wrong = false;
+                  this.secondCard = '';
               }
 
-              this.isOpenOne = !this.isOpenOne;
-
+              this.isOpenOne = true;
               this.firstCard = cardEl;
 
-          } else if (!this.isOpenTwo/* && inverter("is_open2")*/) { // <--open second card
-              this.isOpenTwo = !this.isOpenTwo;
-
+          } else if (this.isOpenTwo === false && cardEl.is_flipped === false) { // <--open second card
+              this.isOpenTwo = true;
               this.secondCard = cardEl;
 
-              if (this.compareCards) { //kak peredat class?
+              //both cards are open and now we need to compare them
+              if (this.compareCards) {
                   this.firstCard.is_right = true;
-                  this.firstCard.is_flipped = false;//this.firstCard.classList.remove("is_open1");
                   this.secondCard.is_right = true;
-                  this.secondCard.is_flipped = false;//this.secondCard.classList.remove("is_open2");
-
-                  this.isOpenOne = !this.isOpenOne;
-                  this.isOpenTwo = !this.isOpenTwo;
-                  this.firstCard = undefined;
-
+                  //clear first card
+                  this.firstCard = '';
+                  //increase counter
                   this.rightPairs++;
 
               } else {
                   this.firstCard.is_wrong = true;
                   this.secondCard.is_wrong = true;
-
-                  this.isOpenOne = !this.isOpenOne;
-                  this.isOpenTwo = !this.isOpenTwo;
               }
+
+              this.isOpenOne = false;
+              this.isOpenTwo = false;
           }
       }
   },
