@@ -15,14 +15,43 @@
         },
         props: {
           msg: String
-      },
-      computed: {
-          timeShow () {
-              let timeStr = String(this.timeNow);
+        },
+        methods: {
+            runTimer () {
+                let timer = setInterval(() => this.timeNow--, 1000);
+            }
+        },
+        computed: {
+            timeShow () {
+                /*let i = 59,
+                    iStr = '';
 
-              return `0:${timeStr}`;
-          }
-      }
+                let timerId = setTimeout(function tick() {
+                    if (i === 0) {
+                      popupWindow('Lose', 'Try again');
+                    } else if (rightPairs === 6) {
+                      popupWindow('Win', 'Play again');
+                    } else {
+                      timerId = setTimeout(tick, 1000);
+                    }
+
+                    if (i < 10) {
+                      iStr = '0' + i;
+                    } else {
+                      iStr = '' + i;
+                    }
+
+                    timer.innerHTML = '00:' + iStr;
+
+                    i--;
+
+                }, 1000);*/
+
+                let timeStr = String(this.timeNow);
+
+                return `0:${timeStr}`;
+            }
+        }
     }
 </script>
 
