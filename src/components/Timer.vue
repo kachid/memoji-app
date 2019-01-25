@@ -18,6 +18,7 @@
         },
         methods: {
             runTimer () {
+                alert('hui');
                 let timer = setInterval(() => this.timeNow--, 1000);
             }
         },

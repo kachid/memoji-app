@@ -6,6 +6,7 @@
                 :key="i + 1"
                 :msg="card"
                 @clickCard="handler"
+                @click="runT"
             >
             </MainField>
         </section>
@@ -71,6 +72,9 @@ export default {
               this.isOpenOne = false;
               this.isOpenTwo = false;
           }
+      },
+      runT () {
+          Timer.runTimer();
       }
   },
   computed: {
