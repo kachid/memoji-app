@@ -6,11 +6,10 @@
                 :key="i + 1"
                 :msg="card"
                 @clickCard="handler"
-                @click="runT"
             >
             </MainField>
         </section>
-         <Timer></Timer>
+         <Timer :isOpenOne="isOpenOne"></Timer>
     </div>
 </template>
 
@@ -35,9 +34,11 @@ export default {
           rightPairs: 0
       }
   },
+  /*created () {
+      this.$on('clickCard', this.handler)
+  },*/
   methods: {
       handler (cardEl) {
-
           if (this.isOpenOne === false && cardEl.is_flipped === false) { // <---------open first card
               // add condition if the cards were opened incorrectly
               if (this.firstCard && !this.compareCards) {
@@ -73,9 +74,6 @@ export default {
               this.isOpenTwo = false;
           }
       },
-      runT () {
-          Timer.runTimer();
-      }
   },
   computed: {
       shuffled () {

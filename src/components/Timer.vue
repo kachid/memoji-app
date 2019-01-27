@@ -14,12 +14,11 @@
             }
         },
         props: {
-          msg: String
+          isOpenOne: Boolean
         },
         methods: {
             runTimer () {
-                alert('hui');
-                let timer = setInterval(() => this.timeNow--, 1000);
+                 setInterval(() => this.timeNow--, 1000);
             }
         },
         computed: {
@@ -49,6 +48,10 @@
                 }, 1000);*/
 
                 let timeStr = String(this.timeNow);
+
+                if (this.isOpenOne) {
+                    this.runTimer ();
+                }
 
                 return `0:${timeStr}`;
             }
