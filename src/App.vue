@@ -6,10 +6,11 @@
                 :key="i + 1"
                 :msg="card"
                 @clickCard="handler"
+                @runTimer.once="firstClick = true"
             >
             </MainField>
         </section>
-         <Timer :isOpenOne="isOpenOne"></Timer>
+         <Timer :firstClick="firstClick"></Timer>
     </div>
 </template>
 
@@ -31,7 +32,8 @@ export default {
           isOpenTwo: false,
           firstCard: '',
           secondCard: '',
-          rightPairs: 0
+          rightPairs: 0,
+          firstClick: false
       }
   },
   /*created () {

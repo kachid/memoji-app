@@ -10,19 +10,26 @@
         name: 'Timer',
         data () {
             return {
-                timeNow: 59
+                timeNow: 59,
+                timer: null
             }
         },
         props: {
-          isOpenOne: Boolean
+          firstClick: Boolean
         },
         methods: {
-            runTimer () {
-                 setInterval(() => this.timeNow--, 1000);
+            startTimer () {
+                this.timer = setInterval(() => {
+                    this.timeNow--;
+                }, 1000);
             }
         },
         computed: {
             timeShow () {
+                let timeStr = '';
+                timeStr = String(this.timeNow);
+
+                return `0:${timeStr}`;
                 /*let i = 59,
                     iStr = '';
 
@@ -47,13 +54,12 @@
 
                 }, 1000);*/
 
-                let timeStr = String(this.timeNow);
-
-                if (this.isOpenOne) {
-                    this.runTimer ();
+            },
+            firstClickListener () {
+                if (this.firstClick) {
+                    this.startTimer();
                 }
 
-                return `0:${timeStr}`;
             }
         }
     }
