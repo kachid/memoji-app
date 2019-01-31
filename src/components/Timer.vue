@@ -22,6 +22,9 @@
                 this.timer = setInterval(() => {
                     this.timeNow--;
                 }, 1000);
+            },
+            stopTimer () {
+                clearInterval(this.timer);
             }
         },
         computed: {
@@ -29,10 +32,16 @@
                 let timeStr = '';
                 timeStr = String(this.timeNow);
 
-                return `0:${timeStr}`;
-                /*let i = 59,
-                    iStr = '';
+                if (this.timeNow < 1) {
+                    this.stopTimer();
+                    return `00:00`
+                } else if (this.timeNow < 10) {
+                    return `00:0${timeStr}`;
+                } else {
+                    return `00:${timeStr}`;
+                }
 
+                /*
                 let timerId = setTimeout(function tick() {
                     if (i === 0) {
                       popupWindow('Lose', 'Try again');
@@ -55,11 +64,11 @@
                 }, 1000);*/
 
             },
-            firstClickListener () {
-                if (this.firstClick) {
-                    this.startTimer();
-                }
 
+        },
+        watch: {
+            firstClick() {
+                this.startTimer();
             }
         }
     }
