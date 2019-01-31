@@ -10,7 +10,11 @@
             >
             </MainField>
         </section>
-         <Timer :firstClick="firstClick"></Timer>
+         <Timer
+             :firstClick="firstClick"
+             :rightPairs="rightPairs"
+             >
+         </Timer>
     </div>
 </template>
 
@@ -36,9 +40,6 @@ export default {
           firstClick: false
       }
   },
-  /*created () {
-      this.$on('clickCard', this.handler)
-  },*/
   methods: {
       handler (cardEl) {
           if (this.isOpenOne === false && cardEl.is_flipped === false) { // <---------open first card

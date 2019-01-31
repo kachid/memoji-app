@@ -15,7 +15,8 @@
             }
         },
         props: {
-          firstClick: Boolean
+          firstClick: Boolean,
+          rightPairs: Number
         },
         methods: {
             startTimer () {
@@ -67,8 +68,11 @@
 
         },
         watch: {
-            firstClick() {
+            firstClick () {
                 this.startTimer();
+            },
+            rightPairs () {
+                //modal popupWindow Win
             }
         }
     }
