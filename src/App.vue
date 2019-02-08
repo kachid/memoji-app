@@ -15,19 +15,32 @@
              :rightPairs="rightPairs"
              >
          </Timer>
+         <Modal>
+             <button id="show-modal" @click="showModal = true">Show Modal</button>
+             <!-- use the modal component, pass in the prop -->
+             <modal v-if="showModal" @close="showModal = false">
+               <!--
+                 you can use custom content here to overwrite
+                 default content
+               -->
+               <h3 slot="header">custom header</h3>
+             </modal>
+         </Modal>
     </div>
 </template>
 
 <script>
 import MainField from './components/MainField.vue'
 import Timer from './components/Timer.vue'
+import Modal from './components/Modal.vue'
 
 export default {
   id: 'wrap',
   name: 'wrap',
   components: {
     MainField,
-    Timer
+    Timer,
+    Modal
   },
   data () {
       return {

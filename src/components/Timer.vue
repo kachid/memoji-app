@@ -34,36 +34,12 @@
                 timeStr = String(this.timeNow);
 
                 if (this.timeNow < 1) {
-                    this.stopTimer();
                     return `00:00`
                 } else if (this.timeNow < 10) {
                     return `00:0${timeStr}`;
                 } else {
                     return `00:${timeStr}`;
                 }
-
-                /*
-                let timerId = setTimeout(function tick() {
-                    if (i === 0) {
-                      popupWindow('Lose', 'Try again');
-                    } else if (rightPairs === 6) {
-                      popupWindow('Win', 'Play again');
-                    } else {
-                      timerId = setTimeout(tick, 1000);
-                    }
-
-                    if (i < 10) {
-                      iStr = '0' + i;
-                    } else {
-                      iStr = '' + i;
-                    }
-
-                    timer.innerHTML = '00:' + iStr;
-
-                    i--;
-
-                }, 1000);*/
-
             },
 
         },
@@ -72,7 +48,18 @@
                 this.startTimer();
             },
             rightPairs () {
-                //modal popupWindow Win
+                if (this.rightPairs === 6) {
+                    this.stopTimer();
+                    //modal popupWindow Win;
+                    alert('Hurray!');
+                }
+            },
+            timeNow () {
+                if (this.timeNow === 0) {
+                    this.stopTimer();
+                    //modal popupWindow lose;
+                    alert('Looooser!');
+                }
             }
         }
     }
