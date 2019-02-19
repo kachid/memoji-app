@@ -1,6 +1,4 @@
 <template>
-    <!-- template for the modal component -->
-    <script type="text/x-template" id="modal-template">
       <transition name="modal">
         <div class="modal-mask">
           <div class="modal-wrapper">
@@ -30,8 +28,6 @@
           </div>
         </div>
       </transition>
-    </script>
-
 </template>
 
 <script>
