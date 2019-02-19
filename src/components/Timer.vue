@@ -51,6 +51,7 @@
                 if (this.rightPairs === 6) {
                     this.stopTimer();
                     //modal popupWindow Win;
+                    this.$emit('win', 'Play again');
                     alert('Hurray!');
                 }
             },
@@ -58,6 +59,7 @@
                 if (this.timeNow === 0) {
                     this.stopTimer();
                     //modal popupWindow lose;
+                    this.$emit('lose', 'Try again');
                     alert('Looooser!');
                 }
             }
