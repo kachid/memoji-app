@@ -11,23 +11,23 @@
             </MainField>
         </section>
          <Timer
+             @showWindow="popupWindow"
              :firstClick="firstClick"
              :rightPairs="rightPairs"
              >
          </Timer>
-             <button id="show-modal" @click="showModal = true">Show Modal</button>
-             <!-- use the modal component, pass in the prop -->
-         <modal v-if="showModal"
-                @close="showModal = false"
-                @win="showModal = true"
-                @lose="showModal = true"
+             <button id="show-modal"
+                @click="showModal = true"
+                >
+                Show Modal
+             </button>
+
+         <Modal v-if="showModal"
+                @close="closeWindow"
+                :message="msgBtn"
          >
-            <!--
-            you can use custom content here to overwrite
-            default content
-            -->
-            <h3 slot="header">custom header</h3>
-         </modal>
+            <h3 slot="header">{{headerPopup}}</h3>
+        </Modal>
     </div>
 </template>
 
@@ -53,7 +53,9 @@ export default {
           secondCard: '',
           rightPairs: 0,
           firstClick: false,
-          showModal: false
+          showModal: false,
+          headerPopup: '',
+          msgBtn: ''
       }
   },
   methods: {
@@ -93,6 +95,39 @@ export default {
               this.isOpenTwo = false;
           }
       },
+      popupWindow (message) {
+          this.showModal = true;
+          this.headerPopup = message[0];
+          this.msgBtn = message[1];
+      },
+      reload () {
+          document.getElementById('substrate').remove();
+
+          timer.innerHTML = '';
+
+          let cards = Array.from(form.children);
+
+          cards.forEach(el => {
+              el.firstElementChild.classList.remove("is_flipped");
+              el.firstElementChild.children[1].classList.remove("is_right");
+              el.firstElementChild.children[1].classList.remove("is_wrong");
+              el.firstElementChild.children[1].classList.remove("is_open1");
+              el.firstElementChild.children[1].classList.remove("is_open2");
+          });
+
+          this.shuffled([...elArr]);
+
+          this.isOpenOne = false;
+          this.isOpenTwo = false;
+          this.FirstClick = false;
+          this.firstCard = undefined;
+          this.secondCard = undefined;
+          this.rightPairs = 0;
+      },
+      closeWindow () {
+          this.showModal = false;
+          this.reload();
+      }
   },
   computed: {
       shuffled () {

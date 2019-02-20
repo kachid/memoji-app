@@ -20,7 +20,7 @@
                 <slot name="footer">
                   default footer
                   <button class="modal-default-button" @click="$emit('close')">
-                    OK
+                    {{message}}
                   </button>
                 </slot>
               </div>
@@ -33,12 +33,10 @@
 <script>
     export default {
         name: 'Modal',
-        data () {
-            return {
-                showModal: false
-            }
-        },
-        props: {}
+
+        props: {
+            message: String
+        }
     }
 </script>
 

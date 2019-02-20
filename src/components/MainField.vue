@@ -104,6 +104,4 @@ export default {
 .is_right {
     background-color: #5AD66F;
 }
-
-
 </style>
