@@ -45,6 +45,7 @@
         },
         watch: {
             firstClick () {
+                this.timeNow = 59;
                 this.startTimer();
             },
             rightPairs () {

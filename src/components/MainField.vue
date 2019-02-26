@@ -28,7 +28,7 @@ export default {
   },
   props: {
     msg: String,
-
+    reload: Boolean
   },
   methods: {
       setActiveClass() {
@@ -39,7 +39,15 @@ export default {
               this.is_flipped = true;
           }
       },
+
   },
+  watch: {
+      reload () {
+          this.is_flipped = false;
+          this.is_right = false;
+          this.is_wrong = false;
+      }
+  }
 }
 
 </script>

@@ -5,6 +5,7 @@
                 v-for="(card, i) in shuffled"
                 :key="i + 1"
                 :msg="card"
+                :reload="reload"
                 @clickCard="handler"
                 @runTimer.once="firstClick = true"
             >
@@ -55,7 +56,8 @@ export default {
           firstClick: false,
           showModal: false,
           headerPopup: '',
-          msgBtn: ''
+          msgBtn: '',
+          reload: false
       }
   },
   methods: {
@@ -100,22 +102,26 @@ export default {
           this.headerPopup = message[0];
           this.msgBtn = message[1];
       },
+
+      closeWindow () {
+          this.showModal = false;
+          this.reload = true;
+      },
+      shuffledThisCards (cardsDeck) {
+          return [...cardsDeck].sort(() => Math.random() - 0.5)
+      }
+  },
+  computed: {
+      shuffled () {
+          return this.shuffledThisCards(this.cards);
+      },
+      compareCards () {
+          return this.firstCard.msg === this.secondCard.msg;
+      }
+  },
+  watch: {
       reload () {
-          document.getElementById('substrate').remove();
-
-          timer.innerHTML = '';
-
-          let cards = Array.from(form.children);
-
-          cards.forEach(el => {
-              el.firstElementChild.classList.remove("is_flipped");
-              el.firstElementChild.children[1].classList.remove("is_right");
-              el.firstElementChild.children[1].classList.remove("is_wrong");
-              el.firstElementChild.children[1].classList.remove("is_open1");
-              el.firstElementChild.children[1].classList.remove("is_open2");
-          });
-
-          this.shuffled([...elArr]);
+          this.shuffledThisCards(this.cards);
 
           this.isOpenOne = false;
           this.isOpenTwo = false;
@@ -124,23 +130,6 @@ export default {
           this.secondCard = undefined;
           this.rightPairs = 0;
       },
-      closeWindow () {
-          this.showModal = false;
-          this.reload();
-      }
-  },
-  computed: {
-      shuffled () {
-          let shuffledCards = [...this.cards].sort(() => Math.random() - 0.5);
-
-          return shuffledCards;
-      },
-      compareCards () {
-          return this.firstCard.msg === this.secondCard.msg;
-      }
-  },
-  watch: {
-      //logic of cards
   }
 }
 
