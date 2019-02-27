@@ -12,17 +12,13 @@
             </MainField>
         </section>
          <Timer
+             v-show="showT"
+             @showTimer="showT = true"
              @showWindow="popupWindow"
              :firstClick="firstClick"
              :rightPairs="rightPairs"
              >
          </Timer>
-             <button id="show-modal"
-                @click="showModal = true"
-                >
-                Show Modal
-             </button>
-
          <Modal v-if="showModal"
                 @close="closeWindow"
                 :message="msgBtn"
@@ -57,7 +53,8 @@ export default {
           showModal: false,
           headerPopup: '',
           msgBtn: '',
-          reload: false
+          reload: false,
+          showT: false
       }
   },
   methods: {
@@ -129,6 +126,7 @@ export default {
           this.firstCard = undefined;
           this.secondCard = undefined;
           this.rightPairs = 0;
+          this.showT = false;
       },
   }
 }

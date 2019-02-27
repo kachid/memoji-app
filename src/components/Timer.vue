@@ -2,7 +2,6 @@
     <div id="timer">
         <h2 >{{timeShow}}</h2>
     </div>
-
 </template>
 
 <script>
@@ -20,6 +19,7 @@
         },
         methods: {
             startTimer () {
+                this.$emit('showTimer');
                 this.timer = setInterval(() => {
                     this.timeNow--;
                 }, 1000);
