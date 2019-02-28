@@ -28,24 +28,26 @@ export default {
   },
   props: {
     msg: String,
-    reload: Boolean
+    reset: Boolean
   },
   methods: {
       setActiveClass() {
-          this.$emit('runTimer');
+          this.$emit('firstClick');
           this.$emit('clickCard', this); // send this to parent module
 
           if (this.is_flipped === false) {
               this.is_flipped = true;
           }
       },
-
-  },
-  watch: {
       reload () {
           this.is_flipped = false;
           this.is_right = false;
           this.is_wrong = false;
+      }
+  },
+  watch: {
+      reset() {
+        this.reload();
       }
   }
 }

@@ -5,17 +5,18 @@
                 v-for="(card, i) in shuffled"
                 :key="i + 1"
                 :msg="card"
-                :reload="reload"
+                :reset="reset"
                 @clickCard="handler"
-                @runTimer.once="firstClick = true"
+                @firstClick="startGame"
             >
             </MainField>
         </section>
          <Timer
              v-show="showT"
              @showTimer="showT = true"
+             @stopTimer="runTimer = false"
              @showWindow="popupWindow"
-             :firstClick="firstClick"
+             :runTimer="runTimer"
              :rightPairs="rightPairs"
              >
          </Timer>
@@ -49,15 +50,19 @@ export default {
           firstCard: '',
           secondCard: '',
           rightPairs: 0,
-          firstClick: false,
+          runTimer: false,
           showModal: false,
           headerPopup: '',
           msgBtn: '',
-          reload: false,
-          showT: false
+          showT: false,
+          reset: false
       }
   },
   methods: {
+      startGame () {
+        this.runTimer = true;
+        this.reset = false;
+      },
       handler (cardEl) {
           if (this.isOpenOne === false && cardEl.is_flipped === false) { // <---------open first card
               // add condition if the cards were opened incorrectly
@@ -102,11 +107,25 @@ export default {
 
       closeWindow () {
           this.showModal = false;
-          this.reload = true;
+          this.reload();
       },
       shuffledThisCards (cardsDeck) {
           return [...cardsDeck].sort(() => Math.random() - 0.5)
-      }
+      },
+      reload () {
+          this.shuffledThisCards(this.cards);
+
+          this.isOpenOne = false;
+          this.isOpenTwo = false;
+          this.firstCard = undefined;
+          this.secondCard = undefined;
+          this.rightPairs = 0;
+
+          this.runTimer = false;
+          this.showT = false;
+
+          this.reset = true;
+      },
   },
   computed: {
       shuffled () {
@@ -117,17 +136,7 @@ export default {
       }
   },
   watch: {
-      reload () {
-          this.shuffledThisCards(this.cards);
 
-          this.isOpenOne = false;
-          this.isOpenTwo = false;
-          this.FirstClick = false;
-          this.firstCard = undefined;
-          this.secondCard = undefined;
-          this.rightPairs = 0;
-          this.showT = false;
-      },
   }
 }
 

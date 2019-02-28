@@ -14,7 +14,7 @@
             }
         },
         props: {
-          firstClick: Boolean,
+          runTimer: Boolean,
           rightPairs: Number
         },
         methods: {
@@ -44,7 +44,7 @@
 
         },
         watch: {
-            firstClick () {
+            runTimer () {
                 this.timeNow = 59;
                 this.startTimer();
             },
@@ -53,6 +53,7 @@
                     this.stopTimer();
                     //modal popupWindow Win;
                     this.$emit('showWindow', ['win', 'Play again']);
+                    this.$emit('stopTimer');
                 }
             },
             timeNow () {
@@ -60,6 +61,7 @@
                     this.stopTimer();
                     //modal popupWindow lose;
                     this.$emit('showWindow', ['lose', 'Try again']);
+                    this.$emit('stopTimer');
                 }
             }
         }
