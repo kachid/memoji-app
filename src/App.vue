@@ -7,7 +7,6 @@
                 :msg="card"
                 :reset="reset"
                 @clickCard="handler"
-                @firstClick="startGame"
             >
             </MainField>
         </section>
@@ -51,10 +50,10 @@ export default {
           secondCard: '',
           rightPairs: 0,
           runTimer: false,
+          showT: false,
           showModal: false,
           headerPopup: '',
           msgBtn: '',
-          showT: false,
           reset: false
       }
   },
@@ -126,7 +125,7 @@ export default {
           this.secondCard = '';
           this.rightPairs = 0;
 
-          //останавливаем таймер
+          //обнуляем таймер
           this.runTimer = false;
           this.showT = false;
 
