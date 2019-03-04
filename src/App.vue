@@ -2,7 +2,7 @@
     <div id="wrap">
         <section>
             <MainField
-                v-for="(card, i) in shuffled"
+                v-for="(card, i) in cards"
                 :key="i + 1"
                 :msg="card"
                 :reset="reset"
@@ -58,6 +58,9 @@ export default {
           reset: false
       }
   },
+  created: function () {
+      this.cards = this.shuffledThisCards(this.cards);
+  },
   methods: {
       startGame () {
         this.runTimer = true;
@@ -110,27 +113,28 @@ export default {
           this.reload();
       },
       shuffledThisCards (cardsDeck) {
-          return [...cardsDeck].sort(() => Math.random() - 0.5)
+          return [...cardsDeck].sort(() => Math.random() - 0.5);
       },
       reload () {
-          this.shuffledThisCards(this.cards);
+          // перемешиваем колоду
+          this.cards = this.shuffledThisCards(this.cards);
 
+          //обнуляем логику
           this.isOpenOne = false;
           this.isOpenTwo = false;
-          this.firstCard = undefined;
-          this.secondCard = undefined;
+          this.firstCard = '';
+          this.secondCard = '';
           this.rightPairs = 0;
 
+          //останавливаем таймер
           this.runTimer = false;
           this.showT = false;
 
+          //переворачиваем карты рубашкой вверх
           this.reset = true;
       },
   },
   computed: {
-      shuffled () {
-          return this.shuffledThisCards(this.cards);
-      },
       compareCards () {
           return this.firstCard.msg === this.secondCard.msg;
       }
