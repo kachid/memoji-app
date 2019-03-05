@@ -13,9 +13,9 @@
          <Timer
              v-show="showT"
              @showTimer="showT = true"
-             @stopTimer="runTimer = false"
+             @stopTimer="startTimer = false"
              @showWindow="popupWindow"
-             :runTimer="runTimer"
+             :runTimer="startTimer"
              :rightPairs="rightPairs"
              >
          </Timer>
@@ -49,7 +49,7 @@ export default {
           firstCard: '',
           secondCard: '',
           rightPairs: 0,
-          runTimer: false,
+          startTimer: false,
           showT: false,
           showModal: false,
           headerPopup: '',
@@ -62,10 +62,10 @@ export default {
   },
   methods: {
       startGame () {
-        this.runTimer = true;
-        this.reset = false;
+        this.startTimer = true;
       },
       handler (cardEl) {
+          this.startGame();
           if (this.isOpenOne === false && cardEl.is_flipped === false) { // <---------open first card
               // add condition if the cards were opened incorrectly
               if (this.firstCard && !this.compareCards) {
@@ -126,7 +126,7 @@ export default {
           this.rightPairs = 0;
 
           //обнуляем таймер
-          this.runTimer = false;
+          this.startTimer = false;
           this.showT = false;
 
           //переворачиваем карты рубашкой вверх

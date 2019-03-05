@@ -44,9 +44,11 @@
 
         },
         watch: {
-            runTimer () {
-                this.timeNow = 59;
-                this.startTimer();
+            runTimer (newVal) {
+                if (newVal) {
+                    this.timeNow = 59;
+                    this.startTimer();
+                }
             },
             rightPairs () {
                 if (this.rightPairs === 6) {

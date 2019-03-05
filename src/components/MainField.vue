@@ -40,7 +40,7 @@ export default {
       }
   },
   watch: {
-      flipCard (newV, oldV) {
+      flipCard () {
           this.is_flipped = false;
           this.is_right = false;
           this.is_wrong = false;
