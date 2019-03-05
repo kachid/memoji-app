@@ -5,7 +5,7 @@
                 v-for="(card, i) in cards"
                 :key="i + 1"
                 :msg="card"
-                :reset="reset"
+                :flipCard="reset"
                 @clickCard="handler"
             >
             </MainField>
@@ -130,8 +130,8 @@ export default {
           this.showT = false;
 
           //переворачиваем карты рубашкой вверх
-          this.reset = true;
-      },
+          this.reset = !this.reset;
+      }
   },
   computed: {
       compareCards () {

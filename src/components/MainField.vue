@@ -28,7 +28,7 @@ export default {
   },
   props: {
     msg: String,
-    reset: Boolean
+    flipCard: Boolean
   },
   methods: {
       setActiveClass() {
@@ -37,16 +37,13 @@ export default {
           if (this.is_flipped === false) {
               this.is_flipped = true;
           }
-      },
-      reload () {
-          this.is_flipped = false;
-          this.is_right = false;
-          this.is_wrong = false;
       }
   },
   watch: {
-      reset() {
-        this.reload();
+      flipCard (newV, oldV) {
+          this.is_flipped = false;
+          this.is_right = false;
+          this.is_wrong = false;
       }
   }
 }
