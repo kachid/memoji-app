@@ -19,9 +19,9 @@
              :rightPairs="rightPairs"
              >
          </Timer>
-         <UserID>
+         <UserInfo>
              <h3>Hi</h3>
-         </UserID>
+         </UserInfo>
          <Modal v-if="showModal"
                 @close="closeWindow"
                 :message="msgBtn"
@@ -35,7 +35,7 @@
 import MainField from './components/MainField.vue'
 import Timer from './components/Timer.vue'
 import Modal from './components/Modal.vue'
-import UserID from './components/UserID.vue'
+import UserInfo from './components/UserInfo.vue'
 
 export default {
   id: 'wrap',
@@ -44,7 +44,7 @@ export default {
     MainField,
     Timer,
     Modal,
-    UserID
+    UserInfo
   },
   data () {
       return {
