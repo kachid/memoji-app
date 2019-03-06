@@ -2,6 +2,7 @@
     <div class="user-wrapper">
         <header>
             <h3>Статистика игр</h3>
+            <span v-if="msgTime > 0">Вы прошли игру за {{msgTime}} секунды</span>
         </header>
     </div>
 </template>
@@ -15,7 +16,7 @@ export default {
       }
   },
   props: {
-
+      msgTime: Number
   },
   methods: {
 

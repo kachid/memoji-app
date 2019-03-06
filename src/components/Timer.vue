@@ -56,6 +56,7 @@
                     //modal popupWindow Win;
                     this.$emit('showWindow', ['win', 'Play again']);
                     this.$emit('stopTimer');
+                    this.$emit('playTime', this.timeNow);
                 }
             },
             timeNow () {

@@ -15,11 +15,14 @@
              @showTimer="showT = true"
              @stopTimer="startTimer = false"
              @showWindow="popupWindow"
+             @playTime="setPlayTime"
              :runTimer="startTimer"
              :rightPairs="rightPairs"
              >
          </Timer>
-         <UserInfo>
+         <UserInfo
+            :msgTime="complitedTime"
+         >
              <h3>Hi</h3>
          </UserInfo>
          <Modal v-if="showModal"
@@ -59,7 +62,8 @@ export default {
           showModal: false,
           headerPopup: '',
           msgBtn: '',
-          reset: false
+          reset: false,
+          complitedTime: 0
       }
   },
   created: function () {
@@ -136,6 +140,10 @@ export default {
 
           //переворачиваем карты рубашкой вверх
           this.reset = !this.reset;
+      },
+      setPlayTime (time) {
+          this.complitedTime = 60 - time;
+          console.log(this.complitedTime);
       }
   },
   computed: {
