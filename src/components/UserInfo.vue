@@ -1,6 +1,7 @@
 <template>
     <div class="user-wrapper">
         <header>
+            <slot name="welcome"></slot>
             <h3>Статистика игр</h3>
             <span v-if="msgTime > 0">Вы прошли игру за {{msgTime}} секунды</span>
         </header>

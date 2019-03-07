@@ -23,7 +23,7 @@
          <UserInfo
             :msgTime="complitedTime"
          >
-             <h3>Hi</h3>
+             <h3 slot="welcome">Hi</h3>
          </UserInfo>
          <Modal v-if="showModal"
                 @close="closeWindow"
