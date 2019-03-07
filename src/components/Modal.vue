@@ -12,13 +12,13 @@
 
               <div class="modal-body">
                 <slot name="body">
-                  default body
+                  Unknow user
                 </slot>
               </div>
 
               <div class="modal-footer">
                 <slot name="footer">
-                  default footer
+                  Good luck!
                   <button class="modal-default-button" @click="$emit('close')">
                     {{message}}
                   </button>

@@ -29,7 +29,7 @@
                 @close="closeWindow"
                 :message="msgBtn"
          >
-            <h3 slot="header">{{headerPopup}}</h3>
+            <h3 slot="header">You {{headerPopup}}!</h3>
         </Modal>
     </div>
 </template>
