@@ -23,7 +23,7 @@
          <UserInfo
             :msgTime="complitedTime"
          >
-             <h3 slot="welcome">Hi</h3>
+             <h3 slot="welcome">Hi, {{userID}}!</h3>
          </UserInfo>
          <Modal v-if="showModal"
                 @close="closeWindow"
@@ -63,7 +63,8 @@ export default {
           headerPopup: '',
           msgBtn: '',
           reset: false,
-          complitedTime: 0
+          complitedTime: 0,
+          userID: "Unknow user"
       }
   },
   created: function () {
