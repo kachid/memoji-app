@@ -1,5 +1,22 @@
 <template>
     <div id="wrap">
+        <header>
+            <UserInfo
+               :msgTime="complitedTime"
+            >
+                <h3 slot="welcome">Hi, {{userID}}!</h3>
+                <h4 slot="results"
+                    v-for="(result, i) in this.complitedGames"
+                    :key="i"
+                    >
+                    {{i}}: - {{result}} seconds
+                </h4>
+            </UserInfo>
+            <h1>Memoji</h1>
+            <div class="wrapper-button">
+                <button type="button" name="button">Log in</button>                
+            </div>
+        </header>
         <section>
             <MainField
                 v-for="(card, i) in cards"
@@ -20,22 +37,13 @@
              :rightPairs="rightPairs"
              >
          </Timer>
-         <UserInfo
-            :msgTime="complitedTime"
-         >
-             <h3 slot="welcome">Hi, {{userID}}!</h3>
-             <h4 slot="results"
-                 v-for="(result, i) in this.complitedGames"
-                 :key="i"
-                 >
-                 {{i}}: - {{result}} seconds
-             </h4>
-         </UserInfo>
+
          <Modal v-if="showModal"
                 @close="closeWindow"
                 :message="msgBtn"
          >
             <h3 slot="header">You {{headerPopup}}!</h3>
+            <h3 slot="body">{{userID}}, you completed this game in {{complitedTime}} seconds</h3>
         </Modal>
     </div>
 </template>
@@ -177,6 +185,11 @@ let elArr = [
 
 body {
     background-color: #CFD0CF;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
 }
 
 header h1 {

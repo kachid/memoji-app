@@ -33,8 +33,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .user-wrapper {
-    position: fixed;
-    bottom: 100px;
-    left: 100px;
+    display: flex;
+    flex-direction: column;
+}
+header {
+    display: flex;
+    flex-direction: column;
 }
 </style>
