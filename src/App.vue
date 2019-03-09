@@ -24,6 +24,12 @@
             :msgTime="complitedTime"
          >
              <h3 slot="welcome">Hi, {{userID}}!</h3>
+             <h4 slot="results"
+                 v-for="(result, i) in this.complitedGames"
+                 :key="i"
+                 >
+                 {{i}}: - {{result}} seconds
+             </h4>
          </UserInfo>
          <Modal v-if="showModal"
                 @close="closeWindow"
@@ -64,6 +70,7 @@ export default {
           msgBtn: '',
           reset: false,
           complitedTime: 0,
+          complitedGames: [],
           userID: "Unknow user"
       }
   },
@@ -144,7 +151,7 @@ export default {
       },
       setPlayTime (time) {
           this.complitedTime = 60 - time;
-          console.log(this.complitedTime);
+          this.complitedGames.push(this.complitedTime);
       }
   },
   computed: {

@@ -3,8 +3,9 @@
         <header>
             <slot name="welcome"></slot>
             <h3>Game results:</h3>
-            <span v-if="msgTime > 0">Вы прошли игру за {{msgTime}} секунды</span>
+            <span v-if="msgTime > 0">you completed the game in {{msgTime}} seconds</span>
         </header>
+        <slot name="results"></slot>
     </div>
 </template>
 
