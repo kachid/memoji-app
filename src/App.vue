@@ -14,7 +14,7 @@
             </UserInfo>
             <h1>Memoji</h1>
             <div class="wrapper-button">
-                <button type="button" name="button">Log in</button>                
+                <button type="button" name="button">Log in</button>
             </div>
         </header>
         <section>
@@ -190,6 +190,7 @@ body {
 header {
     display: flex;
     justify-content: space-around;
+    align-content: center;
 }
 
 header h1 {
