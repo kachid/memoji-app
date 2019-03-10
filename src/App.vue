@@ -1,9 +1,8 @@
 <template>
+    <v-app>
     <div id="wrap">
         <header>
-            <UserInfo
-               :msgTime="complitedTime"
-            >
+            <UserInfo :msgTime="complitedTime">
                 <h3 slot="welcome">Hi, {{userID}}!</h3>
                 <h4 slot="results"
                     v-for="(result, i) in this.complitedGames"
@@ -14,19 +13,23 @@
             </UserInfo>
             <h1>Memoji</h1>
             <div class="wrapper-button">
-                <button type="button" name="button">Log in</button>
+                <v-btn>Log in</v-btn>
             </div>
         </header>
-        <section>
-            <MainField
-                v-for="(card, i) in cards"
-                :key="i + 1"
-                :msg="card"
-                :flipCard="reset"
-                @clickCard="handler"
-            >
-            </MainField>
-        </section>
+        <v-container grid-list-md>
+            <v-layout row wrap>
+                <v-flex v-for="(card, i) in cards" xs3>
+                    <MainField
+
+                        :key="i + 1"
+                        :msg="card"
+                        :flipCard="reset"
+                        @clickCard="handler"
+                    >
+                    </MainField>
+                </v-flex>
+            </v-layout>
+        </v-container>
          <Timer
              v-show="showT"
              @showTimer="showT = true"
@@ -46,6 +49,7 @@
             <h3 slot="body">{{userID}}, you completed this game in {{complitedTime}} seconds</h3>
         </Modal>
     </div>
+    </v-app>
 </template>
 
 <script>
