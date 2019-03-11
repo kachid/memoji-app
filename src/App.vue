@@ -18,10 +18,11 @@
         </header>
         <v-container grid-list-md>
             <v-layout row wrap>
-                <v-flex v-for="(card, i) in cards" xs3>
-                    <MainField
-
+                <v-flex v-for="(card, i) in cards"
                         :key="i + 1"
+                        xs3
+                    >
+                    <MainField
                         :msg="card"
                         :flipCard="reset"
                         @clickCard="handler"

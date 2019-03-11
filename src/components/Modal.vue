@@ -19,9 +19,11 @@
               <div class="modal-footer">
                 <slot name="footer">
                   Good luck!
-                  <button class="modal-default-button" @click="$emit('close')">
+                  <v-btn
+                    class="pink"
+                    @click="$emit('close')">
                     {{message}}
-                  </button>
+                </v-btn>
                 </slot>
               </div>
             </div>
